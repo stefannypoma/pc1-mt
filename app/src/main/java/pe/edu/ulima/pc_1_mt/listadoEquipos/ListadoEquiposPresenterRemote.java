@@ -29,7 +29,7 @@ public class ListadoEquiposPresenterRemote implements ListadoEquiposPresenter{
     public void obtenerEquipos() {
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://pichangers-api.mybluemix.net/rest")
+                .baseUrl("http://1-dot-pichangers-1307.appspot.com/rest/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
