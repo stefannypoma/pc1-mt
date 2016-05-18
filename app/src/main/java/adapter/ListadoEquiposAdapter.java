@@ -31,8 +31,6 @@ public class ListadoEquiposAdapter extends BaseAdapter{
         mContext = context;
     }
 
-
-
     @Override
     public int getCount() {
         return mEquipos.size();

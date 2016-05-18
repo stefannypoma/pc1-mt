@@ -17,35 +17,27 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class LoginPresenterRemote implements LoginPresenter {
 
-    LoginView mView;
-
-    public LoginPresenterRemote (LoginView view){
-        mView = view;
-    }
-
     @Override
-    public void obtenerAlumnos() {
+    public void obtenerLogin(Alumno alumno) {
+
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://demo7318484.mockable.io")
+                .baseUrl("http://1-dot-pichangers-1307.appspot.com/rest/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         AlumnosService service = retrofit.create(AlumnosService.class);
-        service.obtenerAlumnos().enqueue(new Callback<List<Alumno>>() {
+        service.login(alumno).enqueue(new Callback<Message>() {
             @Override
-            public void onResponse(Call<List<Alumno>> call, Response<List<Alumno>> response) {
-                //Codigo luego de la respuesta de servicio (exitosa)
-                List<Alumno> alumnos = response.body();
-                mView.mostrarListadoAlumnos(alumnos);
+            public void onResponse(Call<Message> call, Response<Message> response) {
+                Message a = new Message("ok");
+
             }
 
             @Override
-            public void onFailure(Call<List<Alumno>> call, Throwable t) {
-                //Codigo luego de un error
-                Log.e("Ulimers", t.getMessage());
+            public void onFailure(Call<Message> call, Throwable t) {
+
             }
         });
+
     }
-
-
 }

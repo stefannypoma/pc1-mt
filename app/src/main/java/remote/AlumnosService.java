@@ -3,7 +3,9 @@ package remote;
 import java.util.List;
 
 import bean.Alumno;
+import pe.edu.ulima.pc_1_mt.login.Message;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 
@@ -13,6 +15,6 @@ import retrofit2.http.POST;
 public interface AlumnosService {
 
     @POST("/alumnos/login")
-    Call<List<Alumno>> obtenerAlumnos();
+    Call<Message> login(@Body Alumno alumno);
 
 }

@@ -54,7 +54,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:hint="Ingrese ususario"
-
+            android:textColorHint="#ffffff"
             android:layout_below="@id/tviLogin"/>
 
         <EditText
@@ -63,8 +63,8 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:hint="Ingrese contraseña"
-            android:password="true"
-
+            android:inputType="textPassword"
+            android:textColorHint="#ffffff"
             android:layout_below="@id/eteUsuario" />
 
         <Button
@@ -78,13 +78,7 @@
             android:background="#01DFD7"
             android:textColor="#ffffff"/>
 
-
-
-
     </LinearLayout>
-
-
-
 
 
 </LinearLayout>

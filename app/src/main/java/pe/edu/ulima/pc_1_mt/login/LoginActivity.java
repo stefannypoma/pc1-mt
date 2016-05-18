@@ -11,21 +11,17 @@ import android.widget.Toast;
 import bean.Alumno;
 import pe.edu.ulima.pc_1_mt.listadoEquipos.ListadoEquiposActivity;
 import pe.edu.ulima.pc_1_mt.R;
+import remote.AlumnosService;
+import retrofit2.Call;
+import retrofit2.http.Body;
 
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener, LoginPresenter {
 
     Button butInscribir;
     EditText eteUsuario;
     EditText etePassword;
 
-    LoginView mView;
-
-
-
-    public LoginActivity(LoginView view){
-        mView = view;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,32 +32,34 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         etePassword = (EditText) findViewById(R.id.etePassword);
         butInscribir = (Button) findViewById(R.id.butInscribir);
 
+
+
         butInscribir.setOnClickListener(this);
     }
 
     public void onClick(View v) {
 
-        String usuario = eteUsuario.getText().toString();
-        String password = etePassword.getText().toString();
-
-        Alumno alumno1;
-
-
-
-        if(usuario.equals("pdm") && password.equals("123")){
-
             Intent intent = new Intent(this,ListadoEquiposActivity.class);
             startActivity(intent);
-        }else{
-            Toast.makeText(this, "Login incorrecto", Toast.LENGTH_SHORT).show();
-        }
-
-
-
 
     }
 
 
+    @Override
+    public void obtenerLogin(Alumno alumno) {
 
+        eteUsuario = (EditText) findViewById(R.id.eteUsuario);
+        etePassword = (EditText) findViewById(R.id.etePassword);
+        butInscribir = (Button) findViewById(R.id.butInscribir);
 
+        String usuario = eteUsuario.getText().toString();
+        String password = etePassword.getText().toString();
+
+        if (usuario.equals(alumno.getCodigo())&& password.equals("123")){
+            onClick(butInscribir);
+        }else {
+            Toast.makeText(this, "Login incorrecto", Toast.LENGTH_SHORT).show();
+        }
+
+    }
 }
